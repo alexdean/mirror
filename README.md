@@ -58,7 +58,7 @@ bundle
 I don't currently know of a convenient way to distribute Automator scripts,
 but recreating this one should be pretty easy.
 
-![screenshot](support/automator-screenshot.png)
+![screenshot](support/automator-screenshot.jpg)
 
 ### Set up configuration file
 
