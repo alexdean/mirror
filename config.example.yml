@@ -1,0 +1,4 @@
+:local_dir: '/Users/alex/public-stuff'
+:remote_dir: 'https://www.website.com/dav/public/'
+:basic_auth: 'user:password'
+:log_file: /Users/alex/Code/mirror/log.txt

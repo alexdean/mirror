@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>org.deanspot.mirror</string>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/alex/Code/mirror</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/alex/.rvm/wrappers/ruby-2.3.3/bundle</string>
+    <string>exec</string>
+    <string>ruby</string>
+    <string>bin/main.rb</string>
+  </array>
+
+  <!--
+  <key>StandardErrorPath</key>
+  <string>/Users/alex/Code/mirror/main-stderr.txt</string>
+  <key>StandardOutPath</key>
+  <string>/Users/alex/Code/mirror/main-stdout.txt</string>
+  -->
+
+  <key>KeepAlive</key>
+  <true/>
+</dict>
+</plist>
