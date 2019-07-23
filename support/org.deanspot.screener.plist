@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>org.deanspot.screener</string>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/alex/Code/mirror</string>
+
+  <key>WatchPaths</key>
+  <array>
+    <!-- whereever OSX puts screenshots -->
+    <!-- this is repeated in ProgramArguments and must be modified there also -->
+    <string>/Users/alex/Desktop/screenshots</string>
+  </array>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/alex/.rvm/wrappers/ruby-2.3.3/bundle</string>
+    <string>exec</string>
+    <string>ruby</string>
+    <string>bin/screener.rb</string>
+    <string>/Users/alex/Desktop/screenshots</string>
+    <!-- a directory being watched by mirror -->
+    <string>/Users/alex/deanspot-public/screenshots</string>
+  </array>
+</dict>
+</plist>

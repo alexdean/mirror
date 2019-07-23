@@ -1,9 +1,17 @@
 require 'listen'
 require 'logger'
 require 'pathname'
+require 'yaml'
 
 # watch a local directory. mirror local file changes to remote server via curl+WebDAV.
 class Mirror
+  def self.read_config
+    this_dir = File.dirname(File.realpath(__FILE__))
+    YAML.load(File.read("#{this_dir}/../config.yml"))
+  end
+
+  attr_reader :log
+
   def initialize(local_dir:, remote_dir:, log_file: nil, basic_auth:)
     log_target = log_file || '/dev/null'
     @log = Logger.new(log_target).tap { |l| l.level = Logger::INFO }

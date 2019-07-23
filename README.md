@@ -90,3 +90,36 @@ Watch the log file for activity.
 This Finder action will place a URL on your clipboard.
 
 ![screenshot](support/copy-url-screenshot.png)
+
+## Screenshot Uploading
+
+mirror contains an additional script intended for easy management of screenshots.
+
+### Setup
+
+First: modify `support/org.deanspot.screener.plist`.
+
+  1. Set `WatchPaths` to the directory where OSX places screenshots. See
+     [this blog post](https://www.howtoisolve.com/how-to-change-screenshot-default-saved-path-in-mac-os-x-mavericks-yosemite/)
+     if you'd like to change this from its default (which is to place all screenshots
+     on your desktop).
+  2. Set the two directories in `ProgramArguments`.
+    1. The first should be the same directory as that used for `WatchPaths`.
+    2. The second should be a directory being watched by the main `mirror` process. (See above.)
+
+Then do the following:
+
+```
+cp support/org.deanspot.screener.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/org.deanspot.screener.plist
+```
+
+### Usage
+
+  1. Take a screenshot.
+  2. Change the name of the screenshot to start with 'up' (for 'upload').
+
+The file will be renamed (using the file's mtime plus a random string) and moved to
+the mirror directory, where it will be uploaded to your WebDAV server.
+
+The final URL of the uploaded file will be copied to your clipboard.
