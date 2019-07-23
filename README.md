@@ -95,6 +95,11 @@ This Finder action will place a URL on your clipboard.
 
 mirror contains an additional script intended for easy management of screenshots.
 
+The basic idea is a `launchd` service that watches your screenshot directory for
+file names matching a pattern. Any files found get a random URL-safe name and
+are moved to the mirror upload directory. The final URL is then copied to your
+clipboard.
+
 ### Setup
 
 First: modify `support/org.deanspot.screener.plist`.
@@ -117,6 +122,7 @@ launchctl load ~/Library/LaunchAgents/org.deanspot.screener.plist
 ### Usage
 
   1. Take a screenshot.
+  2. Open your screenshot directory in `Finder`.
   2. Change the name of the screenshot to start with 'up' (for 'upload').
 
 The file will be renamed (using the file's mtime plus a random string) and moved to
