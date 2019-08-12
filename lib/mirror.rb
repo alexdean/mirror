@@ -44,7 +44,7 @@ class Mirror
       out = `curl --write-out '%{http_code}' -T #{path} --user #{@basic_auth} #{remote} 2>/dev/null`.chomp
       @log.info "#{out} PUT    #{path} -> #{remote}"
       notify("#{File.basename(path)} uploaded and copied to clipboard")
-      `echo #{remote} | pbcopy`
+      `printf #{remote} | pbcopy`
     end
   end
 
