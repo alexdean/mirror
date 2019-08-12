@@ -85,6 +85,16 @@ launchctl load ~/Library/LaunchAgents/org.deanspot.mirror.plist
 Copy some image files into your local directory.
 Watch the log file for activity.
 
+### Notifications
+
+If the `osascript` command is in your `$PATH`, an OSX notification will be displayed
+whenever mirror uploads or deletes a file.
+
+### Clipboard Integration
+
+Whenever a file is uploaded, the remote path to that file will be copied to your
+local clipboard.
+
 ### Use Finder to get URLs to the uploaded files
 
 This Finder action will place a URL on your clipboard.
@@ -122,10 +132,7 @@ launchctl load ~/Library/LaunchAgents/org.deanspot.screener.plist
 ### Usage
 
   1. Take a screenshot.
-  2. Open your screenshot directory in `Finder`.
-  2. Change the name of the screenshot to start with 'up' (for 'upload').
 
-The file will be renamed (using the file's mtime plus a random string) and moved to
-the mirror directory, where it will be uploaded to your WebDAV server.
-
-The final URL of the uploaded file will be copied to your clipboard.
+Your screenshot will be renamed (to make a URL-friendly filename) and moved to the
+configured (`mirror`-managed) directory. Once `mirror` uploads the file, a
+notification will be displayed and the file's URL will be copied to your clipboard.
