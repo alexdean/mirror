@@ -57,7 +57,7 @@ class Mirror
       remote = remote_path(path)
       out = `curl --write-out '%{http_code}' -X DELETE --user #{@basic_auth} #{remote} 2>/dev/null`.chomp
       @log.info "#{out} DELETE #{remote}"
-      notify("deleted #{remote}")
+      notify("deleted #{File.basename(path)}")
     end
   end
 
