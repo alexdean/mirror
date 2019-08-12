@@ -136,3 +136,18 @@ launchctl load ~/Library/LaunchAgents/org.deanspot.screener.plist
 Your screenshot will be renamed (to make a URL-friendly filename) and moved to the
 configured (`mirror`-managed) directory. Once `mirror` uploads the file, a
 notification will be displayed and the file's URL will be copied to your clipboard.
+
+
+### Optimization
+
+It may be worthwhile to change which file format OSX uses for screenshots.
+
+```
+$ defaults write com.apple.screencapture type jpg
+$ killall SystemUIServer
+```
+https://www.howtogeek.com/258368/how-to-change-the-screenshot-file-type-in-os-x/
+
+By default, OSX uses the PNG format for screenshots. This is lossless, and a good
+choice for local screenshots. But PNGs are typically much larger files than JPG
+equivalents.
