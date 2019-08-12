@@ -19,6 +19,7 @@ class Mirror
     @local_dir = Pathname.new(local_dir).cleanpath.to_s
     @remote_dir = remote_dir
     @basic_auth = basic_auth
+    @osascript = `which osascript`.chomp
   end
 
   # start a long-running watch
@@ -42,6 +43,7 @@ class Mirror
       remote = remote_path(path)
       out = `curl --write-out '%{http_code}' -T #{path} --user #{@basic_auth} #{remote} 2>/dev/null`.chomp
       @log.info "#{out} PUT    #{path} -> #{remote}"
+      notify("#{File.basename(path)} uploaded and copied to clipboard")
     end
   end
 
@@ -54,6 +56,7 @@ class Mirror
       remote = remote_path(path)
       out = `curl --write-out '%{http_code}' -X DELETE --user #{@basic_auth} #{remote} 2>/dev/null`.chomp
       @log.info "#{out} DELETE #{remote}"
+      notify("deleted #{remote}")
     end
   end
 
@@ -74,5 +77,11 @@ class Mirror
   # @return [String] the portion of local_path after local_dir has been removed
   def relativize(local_path)
     local_path[@local_dir.size..-1]
+  end
+
+  def notify(message)
+    if @osascript != ''
+      `#{@osascript} -e 'display notification "#{message}" with title "Mirror"'`
+    end
   end
 end
